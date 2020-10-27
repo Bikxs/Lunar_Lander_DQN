@@ -1,4 +1,6 @@
+import multiprocessing as mp
 import os
+import sys
 
 import matplotlib.pyplot as plt
 
@@ -47,7 +49,6 @@ def test(agent, testing_episodes):
 
 def train_test(datum):
     variable_name, variable_value, agent = datum
-    print(datum)
 
     if variable_name is None:
         subtitle = agent.name + " Agent\n(defaults \u03B3=" + str(agent.gamma) + ", lr=" + str(
@@ -100,32 +101,24 @@ def agents(episodes=1000):
     return agents
 
 
-results = []
-
-
-def collect_result(result):
-    global results
-    print(results)
-    results.append(result)
-
-
 def para_train_test():
-    plots_dir = "plots"
-    if not os.path.exists(plots_dir):
-        os.makedirs(plots_dir)
-    agents_data = agents(1000)
-    print("Agents:", len(agents_data))
-    for datum in agents_data:
-        train_test(datum)
-
-    import multiprocessing as mp
-    print("Number of processors: ", mp.cpu_count())
-
+    print("Number of processors:", mp.cpu_count())
     pool = mp.Pool(mp.cpu_count() - 1)
-    pool.map_async(train_test, agents_data, callback=collect_result())
+    results = pool.map(train_test, agents_data)
     print(results)
     pool.close()
 
 
 if __name__ == '__main__':
-    para_train_test()
+    plots_dir = "plots"
+    if not os.path.exists(plots_dir):
+        os.makedirs(plots_dir)
+    agents_data = agents(1000)
+    if len(sys.argv) <= 1:
+        print("Agents:", len(agents_data))
+        i = 0
+        for agent in agents_data:
+            print(i, agent[0], '=', agent[1])
+            i += 1
+    else:
+        train_test(agents_data[int(sys.argv[1])])

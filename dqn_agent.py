@@ -13,12 +13,13 @@ from tensorflow.keras.activations import relu, linear
 from tensorflow.keras.layers import Dense
 from tensorflow.keras.losses import mean_squared_error
 from tensorflow.keras.optimizers import Adam
-from tensorflow.python.client import device_lib
+from tensorflow.keras import backend as K
 
 warnings.filterwarnings("ignore")
 from constants import MAX_ITERATIONS
 
-#print(device_lib.list_local_devices())
+
+# print(device_lib.list_local_devices())
 
 
 class DQNAgent:
@@ -32,7 +33,7 @@ class DQNAgent:
 
         self.name = "DQN"
         envname = "LunarLander-v2"
-        self.file_name = f"models/{self.name} {envname} alpha_{int(self.alpha * 1000)} gamma_{int(self.gamma * 1000)} epsilon_{int(self.epsilon * 1000)}"
+        self.file_name = f"models/{self.name} {envname} alpha_{int(self.learning_rate * 1000)} gamma_{int(self.gamma * 1000)} epsilon_{int(self.epsilon * 1000)}"
         self.env = gym.make(envname).env
         self.env.seed(1984)
         np.random.seed(1984)
@@ -46,6 +47,8 @@ class DQNAgent:
         self.min_replay_memory_start = 5000
         self.batch_size = 128
 
+
+        K.clear_session()
         models_dir = "models"
         if not os.path.exists(models_dir):
             os.makedirs(models_dir)
@@ -56,10 +59,6 @@ class DQNAgent:
             self.model = self.create_model()
         self.target_model = self.create_model()
         self.target_model.set_weights(self.model.get_weights())
-
-    @property
-    def alpha(self):
-        return self.learning_rate
 
     def create_model(self):
         model = Sequential()
@@ -89,12 +88,7 @@ class DQNAgent:
         return np.argmax(predicted_actions[0])
 
     def update_weights(self):
-        def update_weights_target():
-            weights = self.model.get_weights()
-            target_weights = self.target_model.get_weights()
-            for i in range(len(target_weights)):
-                target_weights[i] = weights[i]
-            self.target_model.set_weights(target_weights)
+
 
         # update weights if we have enough data in replay_memomry and the counter flag is set
         if len(self.replay_memory) < self.min_replay_memory_start or self.update_counter != 0:
@@ -112,10 +106,16 @@ class DQNAgent:
 
         if self.target_update_counter == 0:
             # self.target_model.set_weights(self.model.get_weights())
-            update_weights_target()
+            self.update_weights_target()
         self.target_update_counter += 1
         self.target_update_counter = self.target_update_counter % 10
 
+    def update_weights_target(self):
+        weights = self.model.get_weights()
+        target_weights = self.target_model.get_weights()
+        for i in range(len(target_weights)):
+            target_weights[i] = weights[i]
+        self.target_model.set_weights(target_weights)
     def extract_columns(self, batch):
         states = np.array([i[0] for i in batch])
         actions = np.array([i[1] for i in batch])
