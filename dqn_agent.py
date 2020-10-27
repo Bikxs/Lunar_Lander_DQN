@@ -18,7 +18,7 @@ from tensorflow.python.client import device_lib
 warnings.filterwarnings("ignore")
 from constants import MAX_ITERATIONS
 
-print(device_lib.list_local_devices())
+#print(device_lib.list_local_devices())
 
 
 class DQNAgent:

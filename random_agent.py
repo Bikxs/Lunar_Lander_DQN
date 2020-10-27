@@ -52,3 +52,35 @@ class RandomAgent(object):
 
     def _take_action(self, state):
         return np.random.choice(self.actions)
+def r_agents(episodes=20000):
+    agent = RandomAgent(episodes=episodes)
+    states = agent.solve()
+    get_observations_limits(states, 20)
+    get_observations_limits(states, 10)
+    get_observations_limits(states, 8)
+    get_observations_limits(states, 5)
+    get_observations_limits(states, 3)
+
+
+def get_observations_limits(states, bins=10):
+    def discretize(data, bins):
+        split = np.array_split(np.sort(data), bins)
+        cutoffs = [-float('inf')]
+        cutoffs.extend([round(x[-1], 3) for x in split])
+        cutoffs.append(float('inf'))
+        # cutoffs = cutoffs[:-1]
+        return cutoffs
+
+    # pprint(states)
+    state_description = ['x', 'y', 'x_', 'y_', 'theta', 'theta_']
+
+    print(states.shape)
+    columns = states.transpose()
+
+    for x in range(len(state_description)):
+        dat = columns[x]
+        cutoff = discretize(dat, bins)
+        sample_data = np.random.choice(dat, 10)
+        state_map[state_description[x]] = cutoff
+    print('bins', bins)
+    print(state_map)

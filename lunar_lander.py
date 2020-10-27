@@ -4,69 +4,50 @@ import matplotlib.pyplot as plt
 
 from constants import *
 from dqn_agent import DQNAgent
-from random_agent import RandomAgent
 
 
-def get_observations_limits(states, bins=10):
-    def discretize(data, bins):
-        split = np.array_split(np.sort(data), bins)
-        cutoffs = [-float('inf')]
-        cutoffs.extend([round(x[-1], 3) for x in split])
-        cutoffs.append(float('inf'))
-        # cutoffs = cutoffs[:-1]
-        return cutoffs
-
-    # pprint(states)
-    state_description = ['x', 'y', 'x_', 'y_', 'theta', 'theta_']
-
-    print(states.shape)
-    columns = states.transpose()
-
-    for x in range(len(state_description)):
-        dat = columns[x]
-        cutoff = discretize(dat, bins)
-        sample_data = np.random.choice(dat, 10)
-        state_map[state_description[x]] = cutoff
-    print('bins', bins)
-    print(state_map)
+def dump_rewards(file_name, rewards):
+    with open(file_name, 'w') as f:
+        for item in rewards:
+            f.write("%s\n" % item)
 
 
-def train_test(agent: DQNAgent, variable_name, variable_value):
-    def make_plot(title, folder, name, rewards):
-        def dump_rewards(file_name):
-            with open(file_name, 'w') as f:
-                for item in rewards:
-                    f.write("%s\n" % item)
+def make_plot(title, folder, name, rewards):
+    plt.figure()
+    plt.title(title)
+    plt.plot(rewards)
+    plt.ylabel('Rewards')
+    plt.xlabel('Episodes')
+    filename = 'plots/' + folder
+    if not os.path.exists(filename):
+        os.makedirs(filename)
+    plt.savefig(filename + '/' + name + '.png', bbox_inches='tight')
+    dump_rewards(filename + '/' + name + '_rewards.txt', rewards)
 
-        plt.figure()
-        plt.title(title)
-        plt.plot(rewards)
-        plt.ylabel('Rewards')
-        plt.xlabel('Episodes')
-        filename = 'plots/' + folder
-        if not os.path.exists(filename):
-            os.makedirs(filename)
-        plt.savefig(filename + '/' + name + '.png', bbox_inches='tight')
-        dump_rewards(filename + '/' + name + '_rewards.txt')
 
-    def test(testing_episodes=100):
-        rewards = []
-        for episode in range(testing_episodes):
-            done = False
-            state = agent.reset()
+def test(agent, testing_episodes):
+    rewards = []
+    for episode in range(testing_episodes):
+        done = False
+        state = agent.reset()
+        action = agent.best_action(state)
+        score = 0
+        iterations = 0
+        while not done:
+            iterations += 1
+            state, reward, done, info = agent.take_action(action)
+            score += reward
             action = agent.best_action(state)
-            score = 0
-            iterations = 0
-            while not done:
-                iterations += 1
-                state, reward, done, info = agent.take_action(action)
-                score += reward
-                action = agent.best_action(state)
-                if iterations >= MAX_ITERATIONS:
-                    break
-            rewards.append(score)
-            print(f"Episode {episode}/{testing_episodes}, Iterations={iterations}, Rewards={round(score, 1)}")
-        return rewards
+            if iterations >= MAX_ITERATIONS:
+                break
+        rewards.append(score)
+        print(f"Episode {episode}/{testing_episodes}, Iterations={iterations}, Rewards={round(score, 1)}")
+    return rewards
+
+
+def train_test(datum):
+    variable_name, variable_value, agent = datum
+    print(datum)
 
     if variable_name is None:
         subtitle = agent.name + " Agent\n(defaults \u03B3=" + str(agent.gamma) + ", lr=" + str(
@@ -90,52 +71,61 @@ def train_test(agent: DQNAgent, variable_name, variable_value):
         subtitle = agent.name + " Agent\n" + variable_name + "=" + str(variable_value)
     title = "Testing Trained " + subtitle
     print(title)
-    rewards = test()
+    rewards = test(agent, 100)
     make_plot(title, subtitle, "testing", rewards)
-    print('\tAveraged Rewards:', sum(rewards) / len(rewards))
+    avgr = sum(rewards) / len(rewards)
+    print('\tAveraged Rewards:', avgr)
     print("----------------------------------------------")
+    return title, avgr
 
 
-def agents(Agent, episodes=1000):
-    plots_dir = "plots"
-    if not os.path.exists(plots_dir):
-        os.makedirs(plots_dir)
+def agents(episodes=1000):
     print("----------------------------------------------")
     # main agent
-    agent = Agent(episodes=episodes)
-    train_test(agent, None, None)
+    agent = DQNAgent(episodes=episodes)
+    # train_test(agent, None, None)
     gammas = [0.8, 0.85, 0.9, 0.95, 0.99]
     learning_rates = [0.01, 0.005, 0.001]
     epsilons = [1.0]
     epsilon_decays = [0.95, .99, 0.995, .999]
 
-    for gamma in gammas:
-        agent = Agent(episodes=episodes, gamma=gamma)
-        train_test(agent, "gamma,\u03B3", gamma)
-    for alpha in learning_rates:
-        agent = Agent(episodes=episodes, alpha=alpha)
-        train_test(agent, "learning_rate,lr", alpha)
-    for epsilon in epsilons:
-        agent = Agent(episodes=episodes, epsilons=epsilons)
-        train_test(agent, "epsilon,\u025B", epsilon)
-    for epsilon_decay in epsilon_decays:
-        agent = Agent(episodes=episodes, epsilon_decay=epsilon_decay)
-        train_test(agent, "epsilon_decay,\u03B4", epsilon_decay)
+    agents = [(None, None, agent)]
+    agents.extend([("gamma,\u03B3", gamma, DQNAgent(episodes=episodes, gamma=gamma)) for gamma in gammas])
+    agents.extend([("learning_rate,lr", alpha, DQNAgent(episodes=episodes, alpha=alpha)) for alpha in learning_rates])
+    agents.extend([("gamma,\u03B3", gamma, DQNAgent(episodes=episodes, gamma=gamma)) for gamma in gammas])
+    agents.extend([("epsilon,\u025B", epsilon, DQNAgent(episodes=episodes, epsilon=epsilon)) for epsilon in epsilons])
+    agents.extend([("epsilon_decay,\u03B4", epsilon_decay, DQNAgent(episodes=episodes, epsilon_decay=epsilon_decay)) for
+                   epsilon_decay in epsilon_decays])
+
+    return agents
 
 
-def r_agents(episodes=20000):
-    agent = RandomAgent(episodes=episodes)
-    states = agent.solve()
-    get_observations_limits(states, 20)
-    get_observations_limits(states, 10)
-    get_observations_limits(states, 8)
-    get_observations_limits(states, 5)
-    get_observations_limits(states, 3)
+results = []
+
+
+def collect_result(result):
+    global results
+    print(results)
+    results.append(result)
+
+
+def para_train_test():
+    plots_dir = "plots"
+    if not os.path.exists(plots_dir):
+        os.makedirs(plots_dir)
+    agents_data = agents(1000)
+    print("Agents:", len(agents_data))
+    for datum in agents_data:
+        train_test(datum)
+
+    import multiprocessing as mp
+    print("Number of processors: ", mp.cpu_count())
+
+    pool = mp.Pool(mp.cpu_count() - 1)
+    pool.map_async(train_test, agents_data, callback=collect_result())
+    print(results)
+    pool.close()
 
 
 if __name__ == '__main__':
-    if True:
-        agents(DQNAgent, 700)
-    else:
-        agents(SARSAAgent, 1000)
-        agents(QLearningAgent, 1000)
+    para_train_test()
