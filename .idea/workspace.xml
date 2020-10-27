@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9b3d6326-9c5c-4d6d-8b9c-a546e2b17466" name="Default Changelist" comment="dqn agents final">
+      <change beforePath="$PROJECT_DIR$/../../../CS6601_Artificial_Intelligence/2. Assignments/CS6601_A4" beforeDir="false" afterPath="$PROJECT_DIR$/../../../CS6601_Artificial_Intelligence/2. Assignments/CS6601_A4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dqn_agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/dqn_agent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Summer_2020/CS6310_Software_Arch_And_Design/3_Assignments/6_Assignment6/Project/cs6310_sum20_a5" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Summer_2020/CS6310_Software_Arch_And_Design/3_Assignments/6_Assignment6/Project/cs6310_sum20_a5" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Pull.Settings">
+    <option name="BRANCH" value="master" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
+  </component>
+  <component name="JupyterTrust" id="3a91b63f-65e5-4c38-9895-13be14c98c90" />
+  <component name="ProjectId" id="1jExpBinoG54HQxTO58gUJXwQV3" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="2. Project2" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="lunar_lander" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="2. Project2" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lunar_lander.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.lunar_lander" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9b3d6326-9c5c-4d6d-8b9c-a546e2b17466" name="Default Changelist" comment="" />
+      <created>1603383232690</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1603383232690</updated>
+      <workItem from="1603383233917" duration="41050000" />
+      <workItem from="1603698310435" duration="24805000" />
+    </task>
+    <task id="LOCAL-00001" summary="testing hyper-parameters">
+      <created>1603399273357</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1603399273357</updated>
+    </task>
+    <task id="LOCAL-00002" summary="printing titles">
+      <created>1603399484772</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1603399484772</updated>
+    </task>
+    <task id="LOCAL-00003" summary="printing titles">
+      <created>1603399585184</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1603399585184</updated>
+    </task>
+    <task id="LOCAL-00004" summary="print out time taken to train">
+      <created>1603401207263</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1603401207263</updated>
+    </task>
+    <task id="LOCAL-00005" summary="refactors agents and constants to own files">
+      <created>1603443268983</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1603443268983</updated>
+    </task>
+    <task id="LOCAL-00006" summary="dqn agent">
+      <created>1603465233000</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1603465233000</updated>
+    </task>
+    <task id="LOCAL-00007" summary="dqn agents final">
+      <created>1603754025154</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1603754025154</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="testing hyper-parameters" />
+    <MESSAGE value="printing titles" />
+    <MESSAGE value="print out time taken to train" />
+    <MESSAGE value="refactors agents and constants to own files" />
+    <MESSAGE value="dqn agent" />
+    <MESSAGE value="dqn agents final" />
+    <option name="LAST_COMMIT_MESSAGE" value="dqn agents final" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="518" y="340" width="734" height="410" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1603729016847">
+      <screen x="0" y="27" width="1680" height="1023" />
+    </state>
+    <state x="518" y="340" width="734" height="410" key="#com.intellij.fileTypes.FileTypeChooser/0.27.1680.1023/1680.0.1920.1080@0.27.1680.1023" timestamp="1603729016847" />
+    <state x="100" y="127" width="1480" height="823" key="DiffContextDialog" timestamp="1603399572583">
+      <screen x="0" y="27" width="1680" height="1023" />
+    </state>
+    <state x="100" y="127" width="1480" height="823" key="DiffContextDialog/0.27.1680.1023/1680.0.1920.1080@0.27.1680.1023" timestamp="1603399572583" />
+    <state width="1874" height="496" key="GridCell.Tab.0.bottom" timestamp="1603755253691">
+      <screen x="0" y="27" width="1680" height="1023" />
+    </state>
+    <state width="1874" height="496" key="GridCell.Tab.0.bottom/0.27.1680.1023/1680.0.1920.1080@0.27.1680.1023" timestamp="1603755253691" />
+    <state width="1874" height="496" key="GridCell.Tab.0.center" timestamp="1603755253691">
+      <screen x="0" y="27" width="1680" height="1023" />
+    </state>
+    <state width="1874" height="496" key="GridCell.Tab.0.center/0.27.1680.1023/1680.0.1920.1080@0.27.1680.1023" timestamp="1603755253691" />
+    <state width="1874" height="496" key="GridCell.Tab.0.left" timestamp="1603755253690">
+      <screen x="0" y="27" width="1680" height="1023" />
+    </state>
+    <state width="1874" height="496" key="GridCell.Tab.0.left/0.27.1680.1023/1680.0.1920.1080@0.27.1680.1023" timestamp="1603755253690" />
+    <state width="1874" height="496" key="GridCell.Tab.0.right" timestamp="1603755253691">
+      <screen x="0" y="27" width="1680" height="1023" />
+    </state>
+    <state width="1874" height="496" key="GridCell.Tab.0.right/0.27.1680.1023/1680.0.1920.1080@0.27.1680.1023" timestamp="1603755253691" />
+    <state x="329" y="173" width="1022" height="737" key="SettingsEditor" timestamp="1603383264687">
+      <screen x="0" y="27" width="1680" height="1023" />
+    </state>
+    <state x="329" y="173" width="1022" height="737" key="SettingsEditor/0.27.1680.1023/1680.0.1920.1080@0.27.1680.1023" timestamp="1603383264687" />
+    <state x="435" y="274" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1603754031596">
+      <screen x="0" y="27" width="1680" height="1023" />
+    </state>
+    <state x="435" y="274" width="800" height="535" key="Vcs.Push.Dialog.v2/0.27.1680.1023/1680.0.1920.1080@0.27.1680.1023" timestamp="1603754031596" />
+    <state x="636" y="438" width="398" height="207" key="git4idea.ui.GitStashDialog" timestamp="1603698329652">
+      <screen x="0" y="27" width="1680" height="1023" />
+    </state>
+    <state x="636" y="438" width="398" height="207" key="git4idea.ui.GitStashDialog/0.27.1680.1023/1680.0.1920.1080@0.27.1680.1023" timestamp="1603698329652" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/2__Project2$lunar_lander.coverage" NAME="lunar_lander Coverage Results" MODIFIED="1603755253674" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>
